@@ -39,7 +39,7 @@ export default function Login() {
   }
 
   return (
-    <Flex minH="100vh" align="center" justify="center" bg="gray.50">
+    <Flex minH="100vh" align="center" justify="center" bg="gray.800">
       <Container maxW="md" py={12} px={[6, 8]} bg="white" borderRadius="xl" boxShadow="card">
         <VStack spacing={8} align="stretch">
           <VStack spacing={3}>

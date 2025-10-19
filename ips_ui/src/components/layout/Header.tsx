@@ -2,6 +2,7 @@ import {
   Box,
   Flex,
   IconButton,
+  useColorMode,
   useColorModeValue,
   Text,
   HStack,
@@ -11,15 +12,17 @@ import {
   MenuItem,
   Avatar,
   useDisclosure,
+  Tooltip,
 } from '@chakra-ui/react'
-import { HamburgerIcon, BellIcon } from '@chakra-ui/icons'
+import { HamburgerIcon, BellIcon, MoonIcon, SunIcon } from '@chakra-ui/icons'
 import { useRouter } from 'next/router'
 interface HeaderProps {
   onShowSidebar: () => void
   showSidebarButton?: boolean
+  isCollapsed?: boolean
 }
 
-const Header = ({ showSidebarButton = true, onShowSidebar }: HeaderProps) => {
+const Header = ({ showSidebarButton = true, onShowSidebar, isCollapsed }: HeaderProps) => {
   const bg = useColorModeValue('white', 'gray.800')
   const borderColor = useColorModeValue('gray.200', 'gray.700')
   const router = useRouter()
@@ -28,7 +31,14 @@ const Header = ({ showSidebarButton = true, onShowSidebar }: HeaderProps) => {
       as="header"
       align="center"
       justify="space-between"
-      w="full"
+      w={{ 
+        base: "full", 
+        md: isCollapsed ? "calc(100% - 60px)" : "calc(100% - 240px)" 
+      }}
+      ml={{ 
+        base: 0, 
+        md: isCollapsed ? "60px" : "240px" 
+      }}
       px={4}
       bg={bg}
       borderBottomWidth="1px"
@@ -37,10 +47,12 @@ const Header = ({ showSidebarButton = true, onShowSidebar }: HeaderProps) => {
       position="fixed"
       top={0}
       zIndex="sticky"
+      transition="all .3s ease"
     >
       <Flex align="center">
         {showSidebarButton && (
           <IconButton
+            display={{ base: "flex", md: "none" }}
             aria-label="Menu"
             icon={<HamburgerIcon />}
             onClick={onShowSidebar}
@@ -55,12 +67,6 @@ const Header = ({ showSidebarButton = true, onShowSidebar }: HeaderProps) => {
       </Flex>
 
       <HStack spacing={4}>
-        <IconButton
-          aria-label="Notifications"
-          icon={<BellIcon />}
-          variant="ghost"
-          size="md"
-        />
         <Menu>
           <MenuButton>
             <Avatar size="sm" name="User Name" src="/placeholder-avatar.jpg" />
@@ -72,6 +78,7 @@ const Header = ({ showSidebarButton = true, onShowSidebar }: HeaderProps) => {
           </MenuList>
         </Menu>
       </HStack>
+
     </Flex>
   )
 }
