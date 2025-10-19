@@ -13,7 +13,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 import { HamburgerIcon, BellIcon } from '@chakra-ui/icons'
-
+import { useRouter } from 'next/router'
 interface HeaderProps {
   onShowSidebar: () => void
   showSidebarButton?: boolean
@@ -22,7 +22,7 @@ interface HeaderProps {
 const Header = ({ showSidebarButton = true, onShowSidebar }: HeaderProps) => {
   const bg = useColorModeValue('white', 'gray.800')
   const borderColor = useColorModeValue('gray.200', 'gray.700')
-
+  const router = useRouter()
   return (
     <Flex
       as="header"
@@ -68,7 +68,7 @@ const Header = ({ showSidebarButton = true, onShowSidebar }: HeaderProps) => {
           <MenuList>
             <MenuItem>Profile</MenuItem>
             <MenuItem>Settings</MenuItem>
-            <MenuItem>Logout</MenuItem>
+            <MenuItem onClick={() => {router.push('/login')}}>Logout</MenuItem>
           </MenuList>
         </Menu>
       </HStack>
