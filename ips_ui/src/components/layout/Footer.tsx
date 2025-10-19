@@ -7,7 +7,7 @@ import {
 } from '@chakra-ui/react'
 
 const Footer = () => {
-  const bg = useColorModeValue('white', 'gray.800')
+  const bg = 'gray.800'
   const borderColor = useColorModeValue('gray.200', 'gray.700')
 
   return (
@@ -28,14 +28,14 @@ const Footer = () => {
           justify="space-between"
           align="center"
         >
-          <Text fontSize="sm">
+          <Text fontSize="sm" color="white">
             © {new Date().getFullYear()} IPS UI. All rights reserved.
           </Text>
           <Stack direction="row" spacing={6}>
-            <Text fontSize="sm" color="gray.500">
+            <Text fontSize="sm" color="white">
               Version 1.0.0
             </Text>
-            <Text fontSize="sm" color="gray.500">
+            <Text fontSize="sm" color="white">
               Support
             </Text>
           </Stack>
