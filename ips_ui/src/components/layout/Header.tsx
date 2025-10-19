@@ -72,8 +72,7 @@ const Header = ({ showSidebarButton = true, onShowSidebar, isCollapsed }: Header
             <Avatar size="sm" name="User Name" src="/placeholder-avatar.jpg" />
           </MenuButton>
           <MenuList>
-            <MenuItem>Profile</MenuItem>
-            <MenuItem>Settings</MenuItem>
+            <MenuItem>Change Password</MenuItem>
             <MenuItem onClick={() => {router.push('/login')}}>Logout</MenuItem>
           </MenuList>
         </Menu>

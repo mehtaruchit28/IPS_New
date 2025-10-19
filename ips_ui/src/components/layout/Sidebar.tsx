@@ -161,7 +161,7 @@ const Sidebar = ({ isOpen, onClose, onCollapse }: SidebarProps) => {
         />
       </Flex>
      <VStack spacing={2} align="stretch" pt={4} px={isCollapsed ? 1 : 2}>
-        <Accordion allowMultiple defaultIndex={isCollapsed ? [] : [0, 1]}>
+        <Accordion allowMultiple defaultIndex={isCollapsed ? [0, 1] : []}>
           {/* Admin Section */}
           <AccordionItem border="none">
             {({ isExpanded }) => (
